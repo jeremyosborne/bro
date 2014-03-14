@@ -20,8 +20,6 @@ Live demo should be running at http://bro.jeremyosborne.com.
 
 ## TODO
 * Build tests on the usage page that demonstrate the APIs.
-* Reporting: API usage (counts and percentage).
-* Reporting: requests made to the server.
 
 
 

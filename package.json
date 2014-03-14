@@ -1,8 +1,30 @@
 {
   "name": "bro",
-  "description": "Mock APIs for testing and classes.",
+  "description": "Mock APIs.",
   "version": "0.0.1",
-  "private": true,
+  "keywords": ["mock", "api"],
+  "license": "MIT",
+  "homepage": "http://github.com/jeremyosborne/bro.git",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jeremyosborne/bro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jeremyosborne/bro/issues"
+  },
+  "author": {
+    "name": "Jeremy Osborne",
+    "email": "jeremywosborne@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Jeremy Osborne",
+      "email": "jeremywosborne@gmail.com"
+    }
+  ],
+  "engines": {
+    "node": "*"
+  },
   "scripts": {
     "start": "node app.js"
   },
