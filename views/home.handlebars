@@ -1,0 +1,18 @@
+<header id="page-header">
+    <h1>Bro</h1>
+</header>
+<section id="page-body">
+    <h2>APIs and usage guidelines</h2>
+
+    {{#each usages}}
+    <hr/>
+    {{!
+        Assume the usage has been run through a markdown parser
+        and shouldn't be escaped.
+    }}
+    {{{usage}}}
+    {{/each}}
+</section>
+<footer id="page-footer">
+    <p>Use this code as you please.</p>
+</footer>

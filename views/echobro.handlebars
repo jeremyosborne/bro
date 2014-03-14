@@ -1,0 +1,106 @@
+<header id="page-header">
+    <h1>echobro response</h1>
+</header>
+<section id="page-body">
+    {{! Twitter Bootstrap classes: table, table-striped, table-bordered }}
+    <table class="meta-info table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th colspan="2">Meta Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>HTTP version</td>
+                <td class="httpVersion">{{httpVersion}}</td>
+            </tr>
+            <tr>
+                <td>HTTP method</td>
+                <td class="method">{{method}}</td>
+            </tr>
+            <tr>
+                <td>URL (as received by the Node.js service)</td>
+                <td class="url">{{url}}</td>
+            </tr>
+            <tr>
+                <td>Raw content body (if not already parsed)</td>
+                <td class="rawBody">{{rawBody}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="headers table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th colspan="2">Headers</th>
+            </tr>
+            <tr>
+                <th>Name</th><th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each headers}}
+            <tr>
+                <td class="name">{{name}}</td>
+                <td class="valu">{{value}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <table class="parsedURL table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th colspan="2">Parsed URL</th>
+            </tr>
+            <tr>
+                <th>Name</th><th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each parsedURL}}
+            <tr>
+                <td class="name">{{name}}</td>
+                <td class="valu">{{value}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <table class="parsedQuery table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th colspan="2">Parsed Query String</th>
+            </tr>
+            <tr>
+                <th>Name</th><th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each parsedQuery}}
+            <tr>
+                <td class="name">{{name}}</td>
+                <td class="valu">{{value}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <table class="parsedBody table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th colspan="2">Parsed Body</th>
+            </tr>
+            <tr>
+                <th>Name</th><th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each parsedBody}}
+            <tr>
+                <td class="name">{{name}}</td>
+                <td class="valu">{{value}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+<footer id="page-footer">
+    <p>Use this code as you please.</p>
+</footer>

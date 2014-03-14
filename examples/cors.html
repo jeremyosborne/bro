@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Bro cross domain test</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" rel="stylesheet"/>
+        <style>
+#content {
+    width: 80%;
+    margin: auto;
+}
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Bro API tests</h1>
+        </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+        <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+        <script id="bro-response-template" type="text/x-handlebars-template">
+<hr/>
+<h2>API: {{api}}</h2>
+<h3>Request info:</h3>
+<ul>
+    <li>Request to url: <strong>{{url}}</strong></li>
+    <li>Request via HTTP Method: <strong>{{method}}</strong></li>
+    <li>Response status: <strong>{{xhr.status}}</strong></li>
+</ul>
+<h3>Response body:</h3>
+<pre>
+    {{xhr.responseText}}
+</pre>
+        </script>
+        <script>
+var BASE_URL = "http://192.168.0.142:3000/api/";
+var template = Handlebars.compile( $("#bro-response-template").html() );
+
+// Run this script locally, test when hosting elsewhere.
+$(function() {
+    // lorembro
+    var api = "lorembro";
+    var url = BASE_URL + api;
+    var method = "GET";
+    $.ajax(url, {
+        method: method,
+        complete: function(xhr, status) {
+            $("#content").append(template({
+                api: api,
+                method: method,
+                url: url,
+                xhr: xhr,
+            }));
+        }
+    });
+});
+
+// Run this script locally, test when hosting elsewhere.
+$(function() {
+    // lorembro
+    var api = "proxybro";
+    var url = BASE_URL + api;
+    var method = "POST";
+    var data = {
+        url: "http://jeremyosborne.com"
+    };
+    $.ajax(url, {
+        method: method,
+        data: data,
+        complete: function(xhr, status) {
+            $("#content").append(template({
+                api: api,
+                method: method,
+                url: url,
+                xhr: xhr,
+            }));
+        }
+    });
+});
+        </script>
+    </body>
+</html>
