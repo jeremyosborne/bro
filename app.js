@@ -1,7 +1,9 @@
+var routes = require('./routes');
+
 var path = require('path');
 var express = require('express');
-var routes = require('./routes');
 var exphbs  = require('express3-handlebars');
+var _ = require("underscore");
 
 var app = express();
 
@@ -31,7 +33,8 @@ app.use(function(req, res, next) {
         next();
     }
 });
-app.use(express.bodyParser());
+app.use(express.json());
+app.use(express.urlencoded());
 app.use(express.methodOverride());
 
 
@@ -55,18 +58,14 @@ if ('development' == app.get('env')) {
 
 
 // Register APIs.
-app.all('/api/echobro', routes.echobro.api);
-app.all('/api/imgbro', routes.imgbro.api);
-app.all('/api/lorembro', routes.lorembro.api);
-app.all('/api/messagebro', routes.messagebro.api);
-app.all('/api/proxybro', routes.proxybro.api);
-app.all('/api/templatebro', routes.templatebro.api);
-app.all('/api/timebro', routes.timebro.api);
-app.all('/api/whereamibro', routes.whereamibro.api);
+_.each(routes, function(route, routeName, routes) {
+    console.log("Registering route:", routeName);
+    app.all('/api/'+routeName, routes[routeName].api);
+});
 
 
 
-// Test page.
+// Usage page.
 app.all('/', function(req, res) {
     var usages = [];
     var route;
@@ -77,7 +76,7 @@ app.all('/', function(req, res) {
         }
     }
 
-    console.log(usages);
+    _.sortBy(usages, "usage");
 
     res.render('home', {usages: usages});
 });

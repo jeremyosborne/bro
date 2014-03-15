@@ -2,21 +2,20 @@
 var path = require("path");
 var fs = require("fs");
 
+var moduleExports = Object.create(null);
 
-
-console.log("Begin loading all route packages.");
 require("fs").readdirSync("./routes").forEach(function(p) {
     var fullpath = path.resolve(path.join(__dirname, p));
-    if (fullpath == path.join(__dirname, "index.js")) {
-        console.log("Not loading:", fullpath);
-    }
-    else if (fs.statSync(fullpath).isDirectory()) {
-        console.log("Loading:", fullpath);
+    if (fs.statSync(fullpath).isDirectory()) {
         // Short directory name becomes module reference.
-        module.exports[p] = require(fullpath);
+        moduleExports[p] = require(fullpath);
+        // DEBUG
+        //console.log("routes: loading:", fullpath);
     }
     else {
-        console.log("Not loading:", fullpath);
+        // DEBUG
+        //console.log("routes: not loading:", fullpath);
     }
 });
-console.log("Done loading all route packages.");
+
+module.exports = moduleExports;
