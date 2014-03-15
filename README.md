@@ -14,8 +14,6 @@ Simple set of APIs that I use for random tests and during classes.
     # point browser to
     http://localhost:54242/
 
-Live demo should be running at http://bro.jeremyosborne.com.
-
 
 
 ## TODO
