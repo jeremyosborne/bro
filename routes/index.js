@@ -4,7 +4,7 @@ var fs = require("fs");
 
 var moduleExports = Object.create(null);
 
-require("fs").readdirSync("./routes").forEach(function(p) {
+require("fs").readdirSync(__dirname).forEach(function(p) {
     var fullpath = path.resolve(path.join(__dirname, p));
     if (fs.statSync(fullpath).isDirectory()) {
         // Short directory name becomes module reference.
