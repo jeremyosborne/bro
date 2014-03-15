@@ -2,7 +2,10 @@
   "name": "bro",
   "description": "Mock APIs.",
   "version": "0.0.1",
-  "keywords": ["mock", "api"],
+  "keywords": [
+    "mock",
+    "api"
+  ],
   "license": "MIT",
   "homepage": "http://github.com/jeremyosborne/bro.git",
   "repository": {
@@ -29,11 +32,11 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.3.7",
-    "request": "~2.27.0",
+    "express": "~3.4.8",
+    "request": "~2.34.0",
     "express3-handlebars": "~0.5.0",
-    "marked": "~0.2.9",
-    "underscore": "~1.5.1",
-    "handlebars": "~2.0.0-alpha.1"
+    "marked": "~0.3.2",
+    "underscore": "~1.6.0",
+    "handlebars": "~2.0.0-alpha.2"
   }
 }

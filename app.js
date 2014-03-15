@@ -1,4 +1,3 @@
-var http = require('http');
 var path = require('path');
 var express = require('express');
 var routes = require('./routes');
@@ -35,20 +34,7 @@ app.use(function(req, res, next) {
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 
-// Register the usage strings of our APIs.
-app.use(function(req, res, next) {
-    res.locals.usages = [
-        {"usage": routes.echobro.usage()},
-        {"usage": routes.imgbro.usage()},
-        {"usage": routes.lorembro.usage()},
-        {"usage": routes.messagebro.usage()},
-        {"usage": routes.proxybro.usage()},
-        {"usage": routes.templatebro.usage()},
-        {"usage": routes.timebro.usage()},
-        {"usage": routes.whereamibro.usage()},
-    ];
-    next();
-});
+
 
 // Make things CORS friendly.
 app.use(function(req, res, next) {
@@ -62,7 +48,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 if ('development' == app.get('env')) {
-    console.log('Application running in development mode.')
+    console.log('Application running in development mode.');
     app.use(express.errorHandler());
 }
 
@@ -71,17 +57,33 @@ if ('development' == app.get('env')) {
 // Register APIs.
 app.all('/api/echobro', routes.echobro.api);
 app.all('/api/imgbro', routes.imgbro.api);
-app.get('/api/lorembro', routes.lorembro.api);
+app.all('/api/lorembro', routes.lorembro.api);
 app.all('/api/messagebro', routes.messagebro.api);
 app.all('/api/proxybro', routes.proxybro.api);
-app.get('/api/templatebro', routes.templatebro.api);
+app.all('/api/templatebro', routes.templatebro.api);
 app.all('/api/timebro', routes.timebro.api);
 app.all('/api/whereamibro', routes.whereamibro.api);
-// Diagnostic/test page.
-app.get('/', routes.home);
 
 
 
-http.createServer(app).listen(app.get('port'), function() {
+// Test page.
+app.all('/', function(req, res) {
+    var usages = [];
+    var route;
+
+    for (route in routes) {
+        if (typeof routes[route].usage == "function") {
+            usages.push({usage: routes[route].usage()});
+        }
+    }
+
+    console.log(usages);
+
+    res.render('home', {usages: usages});
+});
+
+
+
+app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });

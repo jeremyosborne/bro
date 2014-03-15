@@ -4,13 +4,6 @@ var fs = require("fs");
 
 
 
-// Register test page.
-exports.home = function(req, res) {
-    res.render('home', {});
-};
-
-
-
 console.log("Begin loading all route packages.");
 require("fs").readdirSync("./routes").forEach(function(p) {
     var fullpath = path.resolve(path.join(__dirname, p));
