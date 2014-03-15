@@ -9,7 +9,7 @@ Simple set of APIs that I use for random tests and during classes.
 [Node.js](http://nodejs.org) installed, then:
 
     npm install
-    node app
+    npm start
 
     # point browser to
     http://localhost:54242/
