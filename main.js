@@ -8,6 +8,9 @@ const _ = require("lodash");
 const path = require("path");
 const routes = require("./routes");
 
+const processStartDate = new Date(Date.now());
+const version = require("./package.json").version;
+
 var server = function () {
   console.log("Starting bro");
 
@@ -78,7 +81,7 @@ var server = function () {
 
     _.sortBy(usages, "usage");
 
-    res.render("home", { usages: usages });
+    res.render("home", { usages, processStartDate: processStartDate.toString(), version });
   });
 
   app.listen(app.get("port"), function () {
