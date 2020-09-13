@@ -2,7 +2,7 @@
 
 CORS friendly HTTP GET API for retrieving dummy data.
 
-API Endpoint: **api/lorembro**
+API Endpoint: [/api/lorembro](/api/lorembro)
 
 Accepted query string key:value pairs.
 

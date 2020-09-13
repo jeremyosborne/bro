@@ -2,7 +2,7 @@
 
 CORS friendly HTTP API for echoing the HTTP request sent.
 
-API Endpoint: **api/echobro**
+API Endpoint: [/api/echobro](/api/echobro)
 
 Send any HTTP request that you would like. The server will respond with a dissected version of the request.
 

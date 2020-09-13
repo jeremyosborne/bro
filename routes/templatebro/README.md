@@ -2,7 +2,7 @@
 
 CORS friendly HTTP GET API for retrieving templates.
 
-API Endpoint: **api/templatebro**
+API Endpoint: [/api/templatebro](/api/templatebro)
 
 Accepted query string key:value pairs:
 
