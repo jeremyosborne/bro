@@ -1,7 +1,7 @@
 {
   "name": "bro",
   "description": "Mock APIs.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "keywords": [
     "mock",
     "api"
