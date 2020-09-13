@@ -20,7 +20,7 @@
     "email": "jeremywosborne@gmail.com"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 12.18.3"
   },
   "scripts": {
     "start:dev": "nodemon",
